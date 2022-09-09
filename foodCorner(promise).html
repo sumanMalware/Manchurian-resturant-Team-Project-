@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manchurian Shop</title>
+</head>
+
+<body>
+    <script>
+        
+        function prom(complete) {
+            return new Promise(function (resolve, reject) {
+                if (complete) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            });
+        }
+
+        prom(false)
+            .then(() => {
+                name = prompt("WELCOME TO OUR SHOP\nPlease enter your name");
+            })
+            .then(() => {
+                itemChose = prompt(
+                    `Hello, ${name} place your order please.\n MENU\n1.Gobi manchurian\n2.Paneer manchurian\n3.Aalo mancurian\n4.Cabbage manchurian`
+                ).toLowerCase();
+            })
+            .then(() => {
+                itemChose = prompt("you want chilli ?").toLowerCase();
+            })
+            .then(() => {
+                itemChose = prompt("you want onion ?").toLowerCase();
+            })
+            .then(() => {
+                itemChose = prompt("you want extra sauce ?").toLowerCase();
+            })
+            .then(() => {
+                itemChose = prompt("any cooking tips ?").toLowerCase();
+            })
+            .then(() => {
+                setTimeout(() => {
+                    document.write("Your order is placed");
+                    document.write("<br>");
+                    setTimeout(() => {
+                        document.write("cutting the veggies\n");
+                        document.write("<br>");
+                        setTimeout(() => {
+                            document.write("frying the veggies\n");
+                            document.write("<br>");
+                            setTimeout(() => {
+                                document.write("making the sause\n");
+                                document.write("<br>");
+                                setTimeout(() => {
+                                    document.write("garnishing\n");
+                                    document.write("<br>");
+                                    setTimeout(() => {
+                                        document.write("your order is ready to deliver\n");
+                                        document.write("<br>");
+                                        setTimeout(() => {
+                                            document.write("thank you for using our service\n");
+                                            document.write("<br>");
+                                            setTimeout(() => {
+                                                document.write("HASTA LA VISTA\n");
+                                                document.write("<br>");
+                                            }, 2000);
+                                        }, 2000);
+                                    }, 2000);
+                                }, 2000);
+                            }, 2000);
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+            })
+
+            .catch((error) => {
+                document.write("SORRY, shop closed. We would like to contact you once our shop opened, kindly provide ");
+            });
+    </script>
+</body>
+
+</html>

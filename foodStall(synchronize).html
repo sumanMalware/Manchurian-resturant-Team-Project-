@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- <h1>hello this is Suman</h1> -->
+  </head>
+  <body>
+    <script>
+      menu = [
+        "gobi manchurian",
+        "paneer manchurian",
+        "aalo manchurian",
+        "cabbage manchurian",
+      ];
+      itemChose = prompt(
+        "MENU\n1.Gobi manchurian\n2.Paneer manchurian\n3.Aalo mancurian\n4.Cabbage manchurian"
+      ).toLowerCase();
+      process();
+      function sauce() {
+        itemChose = prompt("you want sauce").toLowerCase();
+      }
+      function onions() {
+        itemChose = prompt("you want onions").toLowerCase();
+      }
+      function anythingElse() {
+        itemChose = prompt(
+          "if you want anything else please mention"
+        ).toLowerCase();
+      }
+      function chilli() {
+        itemChose = prompt("you want chilli ?").toLowerCase();
+      }
+      function process() {
+        if (menu.includes(itemChose)) {
+          setTimeout(() => {
+            document.write("order is placed");
+            chilli();
+            sauce();
+            onions();
+            anythingElse();
+            document.write("<br>");
+            setTimeout(() => {
+              setTimeout(() => {
+                document.write("cutting the veggies\n");
+                document.write("<br>");
+                setTimeout(() => {
+                  document.write("frying the veggies\n");
+                  document.write("<br>");
+                  setTimeout(() => {
+                    document.write("making the sause\n");
+                    document.write("<br>");
+                    setTimeout(() => {
+                      document.write("garnishing\n");
+                      document.write("<br>");
+                      setTimeout(() => {
+                        document.write("your order is ready to deliver\n");
+                        document.write("<br>");
+                        setTimeout(() => {
+                          document.write("thank you for using our service\n");
+                          document.write("<br>");
+                          setTimeout(() => {
+                            document.write("HASTA LA VISTA\n");
+                            document.write("<br>");
+                          }, 1000);
+                        }, 2000);
+                      }, 2000);
+                    }, 2000);
+                  }, 2000);
+                }, 2000);
+              }, 2000);
+              document.write("order confirm\n");
+              document.write("<br>");
+            }, 2000);
+          }, 2000);
+        } else {
+          alert("Sorry, right now,We have only Gobi manchurian");
+        }
+      }
+    </script>
+  </body>
+</html>
