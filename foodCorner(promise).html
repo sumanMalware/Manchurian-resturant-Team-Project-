@@ -8,7 +8,7 @@
     <title>Manchurian Shop</title>
 </head>
 
-<body>this 
+<body>this
     <script>
         //creating a function of promise
         function prom(complete) {
@@ -21,8 +21,10 @@
             });
         }
         //giving the value true or false
-        
-        prom(true)
+
+        shopOpen = true
+
+        prom(shopOpen)
             .then(() => {
                 name = prompt("WELCOME TO OUR SHOP\nPlease enter your name");
             })
