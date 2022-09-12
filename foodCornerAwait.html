@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let stockAvailable = true;
+      const promiseImp1 = (value1, value2, timevalue) => {
+        return new Promise((resolve, reject) => {
+          if (value1) {
+            setTimeout(() => {
+              resolve(document.write(value2,"<br>"));
+            }, timevalue);
+          } else {
+            setTimeout(() => {
+              reject(
+                document.write(
+                  "the process is rejected since the value1 is not correct"
+                )
+              );
+            }, timeValue);
+          }
+        });
+      };
+
+      async function promiseCheck() {
+        CustomerName = prompt("WELCOME TO OUR SHOP\nPlease enter your name");
+        menu = prompt(
+          "MENU\n1.Gobi manchurian\n2.Paneer manchurian\n3.Aalo mancurian\n4.Cabbage manchurian"
+        );
+        sauce = prompt("you want sauce").toLowerCase();
+        onions = prompt("you want onions").toLowerCase();
+        chilli = prompt("you want chilli ?").toLowerCase();
+
+        await promiseImp1(true, "Order is placed",100)
+          .then(() => promiseImp1(true, "cutting the veggies", 2000))
+          .then(() => promiseImp1(true, "frying the veggies", 2000))
+          .then(() => promiseImp1(true, "making the sause", 2000))
+          .then(() => promiseImp1(true, "garnishing", 2000))
+          .then(() => promiseImp1(true, "your order is ready to deliver", 2000))
+          .then(() => promiseImp1(true, "thank you for using our service", 2000))
+          .then(() => promiseImp1(true, "HASTA LA VISTA", 2000))
+          
+      }
+      promiseCheck();
+    </script>
+  </body>
+</html>
