@@ -8,9 +8,9 @@
     <title>Manchurian Shop</title>
 </head>
 
-<body>
+<body>this 
     <script>
-        
+        //creating a function of promise
         function prom(complete) {
             return new Promise(function (resolve, reject) {
                 if (complete) {
@@ -20,8 +20,9 @@
                 }
             });
         }
-
-        prom(false)
+        //giving the value true or false
+        
+        prom(true)
             .then(() => {
                 name = prompt("WELCOME TO OUR SHOP\nPlease enter your name");
             })
