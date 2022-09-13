@@ -1,68 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-
-<body>
-  <script>
-    //creating a promise function 
-    const promiseImp1 = (value1, value2, timevalue) => {
-      return new Promise((resolve, reject) => {
-        if (value1) {
+  <body>
+    <p>your menu details</p>
+    <p id="order"></p>
+    <h1>SKJ manchurian shop!!!</h1>
+    <script>
+      function makerequest(taking7) {
+        return new Promise((resolve, reject) => {
+          console.log("moving to the process ");
+          if (taking7 == "yes") {
+            setTimeout(() => {
+              resolve("making the parcel");
+            }, 9000);
+          } else {
+            setTimeout(() => {
+              reject("serving the food");
+            }, 9000);
+          }
+        });
+      }
+      function processes(response) {
+        return new Promise((resolve, reject) => {
           setTimeout(() => {
-            resolve(document.write(value2, "<br>"));
-          }, timevalue);
+            resolve("packing the food\n" + response);
+            document.write("<br>");
+          }, 10000);
+        });
+      }
+      async function final() {
+        try {
+          let location = await makerequest(taking7);
+          document.write("making parcel");
+          document.write("<br>");
+          let processed = await processes(" here you go");
+          document.write("<br>");
+          document.write(processed);
+        } catch (err) {
+          document.write(err);
+        }
+      }
+
+      shop_open = true;
+      menu = [
+        "gobi manchurian",
+        "cabbage manchurian",
+        "soya manchurian",
+        "mushroom manchurian",
+      ];
+      manchurian = {};
+      taking1 = prompt(
+        "what manchurian you need to have\n  1.gobi manchurian\n 2.cabbage manchurian\n 3.soya manchurian\n 4.mushroom manchurian"
+      ).toLowerCase();
+      manchurian["manchurian"] = taking1;
+      taking2 = prompt("do you need to have masala; yes/no,").toLowerCase();
+      if (taking2 == "yes") {
+        manchurian["masalatype"] = "masala";
+      } else {
+        manchurian["masalatype"] = "nomasala";
+      }
+      taking3 = prompt(
+        "do you like to have extra spicey; yes/no,"
+      ).toLowerCase();
+      if (taking3 == "yes") {
+        manchurian["spiceytype"] = "spicey";
+      } else {
+        manchurian["spiceytype"] = "nospicey";
+      }
+
+      taking4 = prompt(
+        "do you like to hava extra onion; yes/no,"
+      ).toLowerCase();
+      if (taking4 == "yes") {
+        manchurian["oniontype"] = "onion";
+      } else {
+        manchurian["oniontype"] = "no_onion";
+      }
+      taking5 = prompt(
+        "do you like to have a sauce on a side,yes/no"
+      ).toLowerCase();
+      if (taking5 == "yes") {
+        manchurian["saucetype"] = "withsauce";
+      } else {
+        manchurian["saucetype"] = "withoutsauce";
+      }
+      taking6 = prompt(
+        " you can give your suggestion ,if you would like to,"
+      ).toLowerCase();
+      taking7 = prompt("do you want to takeaway,yes/no");
+      manchurian["parcel_eating"] = taking7;
+      manchurian["suggessation"] = taking6;
+      function needsauce(customer) {
+        return new Promise(
+          (resolve,
+          (reject) => {
+            if (customer == "withsauce") {
+              resolve();
+            } else {
+              reject();
+            }
+          })
+        );
+      }
+      document.getElementById("order").innerHTML = JSON.stringify(manchurian);
+
+      function start(dish) {
+        document.write(">>>");
+        dish();
+      }
+      function manchurian() {
+        document.write("it's getting ready");
+      }
+      function masala() {
+        document.write("masala is adding on your manchurian");
+      }
+      function nomasala() {
+        document.write("getting prepared without extra masala");
+      }
+      function spicey() {
+        document.write("spicey is adding on your manchurian");
+      }
+      function nospicey() {
+        document.write("you will be getting dish with normal spicey");
+      }
+      function sauce() {
+        document.write("sauce is on your side ; enjoyyy!!!");
+      }
+      function nosauce() {
+        document.write(`${manchurian.manchurian}without sauce`);
+      }
+      function onion() {
+        document.write("with extra onion");
+      }
+      function no_onion() {
+        document.write("without extra onion");
+      }
+      function sauce() {
+        document.write("making the sauce in a delicious way!!");
+      }
+      function nosauce() {
+        document.write("making the manchurian without sauce");
+      }
+
+      function suggestion() {
+        document.write(
+          "your suggestion has taken forward ;thankyou for your time!!!"
+        );
+      }
+      function needsauce(customer) {
+        return new Promise((resolve, reject) => {
+          if (customer == "yes") {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      }
+      if (shop_open) {
+        if (menu.includes(taking1)) {
+          start(order);
+          setTimeout(() => {
+            document.write("your order is ", manchurian.manchurian);
+            document.write("<br>");
+            setTimeout(() => {
+              document.write("kindly wait for minute");
+              document.write("<br>");
+              setTimeout(() => {
+                document.write("vegetables & incredients getting washed");
+                document.write("<br>");
+                setTimeout(() => {
+                  document.write("cutting the vegies");
+                  document.write("<br>");
+                  setTimeout(() => {
+                    document.write("frying the incredients");
+                    setTimeout(() => {
+                      needsauce(taking5)
+                        .then(() => {
+                          document.write("time for a sauce", "<br>");
+                        })
+                        .catch(() => {
+                          document.write("with no sauce", "<br>");
+                        });
+                      document.write("<br>");
+                      if (manchurian.spiceytype == "spicey") {
+                        setTimeout(() => {
+                          start(spicey);
+                          document.write("<br>");
+                          if (manchurian.masalatype == "masala") {
+                            setTimeout(() => {
+                              start(masala);
+                              document.write("<br>");
+                              if (manchurian.saucetype == "withsauce") {
+                                setTimeout(() => {
+                                  start(sauce);
+                                  document.write("<br>");
+                                  if (manchurian.oniontype == "onion") {
+                                    setTimeout(() => {
+                                      start(onion);
+                                      document.write("<br>");
+                                      final();
+                                      document.write("<br>");
+                                      document.write("enjoy the food");
+                                    }, 5000);
+                                  } else {
+                                    setTimeout(() => {
+                                      start(no_onion);
+                                      document.write("<br>");
+                                      final();
+                                      document.write("<br>");
+                                      document.write("enjoy the food");
+                                    }, 6000);
+                                  }
+                                }, 5000);
+                              } else {
+                                setTimeout(() => {
+                                  start(nosauce);
+                                  document.write("<br>");
+                                  if (manchurian.onionstyle == "no_onion") {
+                                    setTimeout(() => {
+                                      start(no_onion);
+                                      document.write("<br>");
+                                      document.write("<br>");
+                                      final();
+                                      document.write("<br>");
+                                      document.write("enjoy the food");
+                                      document.write("<br>");
+                                    }, 5000);
+                                  } else {
+                                    setTimeout(() => {
+                                      start(onion);
+                                      document.write("<br>");
+                                      final();
+                                      document.write("<br>");
+                                      document.write("enjoy the food");
+                                      document.write("<br>");
+                                    }, 7000);
+                                  }
+                                }, 6000);
+                              }
+                            }, 5000);
+                          } else {
+                            setTimeout(() => {
+                              start(nomasala);
+                              document.write("<br>");
+                              if (manchurian.saucetype == "sauce") {
+                                setTimeout(() => {
+                                  start(sauce);
+                                  document.write("<br>");
+                                  final();
+                                  document.write("<br>");
+                                  document.write("enjoy the food");
+                                  document.write("<br>");
+                                }, 5000);
+                              } else {
+                                setTimeout(() => {
+                                  start(nosauce);
+                                  document.write("<br>");
+                                  final();
+                                  document.write("<br>");
+                                  document.write("enjoy the food");
+                                  document.write("<br>");
+                                }, 8000);
+                              }
+                            }, 7000);
+                          }
+                        }, 6000);
+                      } else {
+                        setTimeout(() => {
+                          start(nospicey);
+                          document.write("<br>");
+                          final();
+                          document.write("<br>");
+                          document.write("enjoy the food");
+                          document.write("<br>");
+                        }, 7000);
+                      }
+                    }, 6000);
+                  }, 6000);
+                }, 5500);
+              }, 5500);
+            }, 5000);
+          }, 5000);
         } else {
           setTimeout(() => {
-            reject(
-              document.write(
-                "the process is rejected since the value1 is not correct"
-              )
-            );
-          }, timeValue);
+            document.write("sorry!!!!we don't have any item like,", taking1);
+          }, 2000);
         }
-      });
-    };
-
-    //checking the shop is open or not
-    let shopOpen = true
-    async function promiseCheck() {
-
-      await promiseImp1(shopOpen, "Hello", 100)
-
-        .then(() => customerName = prompt("WELCOME TO OUR SHOP\nPlease enter your name"))
-        .then(() => menu = prompt(`Hello ${customerName} ,place your order please.\n MENU\n1.Gobi manchurian\n2.Paneer manchurian\n3.Aalo mancurian\n4.Cabbage manchurian`))
-        .then(() => sauce = prompt("you want sauce").toLowerCase())
-        .then(() => onions = prompt("you want onions").toLowerCase())
-        .then(() => chilli = prompt("you want chilli ?").toLowerCase())
-
-        .then(() => promiseImp1(true, "your order is placed", 2000))
-        .then(() => promiseImp1(true, "cutting the veggies", 2000))
-        .then(() => promiseImp1(true, "frying the veggies", 2000))
-        .then(() => promiseImp1(true, "making the sause", 2000))
-        .then(() => promiseImp1(true, "garnishing", 2000))
-        .then(() => promiseImp1(true, "your order is ready to deliver", 2000))
-        .then(() => promiseImp1(true, "thank you for using our service", 2000))
-        .then(() => promiseImp1(true, "HASTA LA VISTA", 2000))
-
-        .catch(() => promiseImp1(true, "SORRY, shop closed. We would like to contact you once our shop opened, kindly provide", 100))
-
-
-
-
-    }
-
-    //calling the function
-
-    promiseCheck();
-
-
-  </script>
-</body>
-
+      } else {
+        setTimeout(() => {
+          document.write("sorry!! the shop is closed");
+        }, 1000);
+      }
+      function order() {
+        document.write("your order has been placed;", taking1);
+        document.write("<br>");
+        document.write("your id=", Math.floor(Math.random() * 500));
+        document.write("<br>");
+        document.write("thankyou for your time");
+        document.write("<br>");
+      }
+    </script>
+  </body>
 </html>
